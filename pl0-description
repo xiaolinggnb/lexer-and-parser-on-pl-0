@@ -1,0 +1,18 @@
+reserve:
+	const var procedur begin end odd if then call while do read write
+
+operator:
+	+ - * / < <= > >= # := ; .
+
+delimiter:
+	( ) , \ ; .
+
+unsigned integer:
+	[1-9][0-9]*
+
+identifier:
+	[a-zA-Z][a-zA-Z0-9]*
+
+comment:
+	{ inline comment}
+	/* cross-line comment */
