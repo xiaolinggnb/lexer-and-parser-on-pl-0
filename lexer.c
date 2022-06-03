@@ -3,18 +3,33 @@
 #include<stdlib.h>
 #include<ctype.h>
 //	Constant declarations.
-#define MAX_SIZE 100 + 1
+#define MAX_SIZE 11 + 1
 
 //	Internal representation of PL\0 Tokens
 typedef enum{
 	START, INT, WORD, LESS, GT, COLON /*分号*/,INLINE_COMMENT, BLOCK_COMMENT
 }state;
+
+typedef enum{
+	constsym, identsym, numbersym
+}token_type;
 //	I/O file names.
 #define INPUT_FILE "input1"
 
+// Token-Struct definition
+typedef struct tokenStruct{
+	token_type type;
+	char lexeme[MAX_SIZE];
+	struct tokenStruct* next;
+}token;
+
+//	List of reserved word names.
+char *word[] = {
+	"const"
+};
 
 char* initialize();	//获取代码段
-char*clean(char*code);	//清除注释段
+char* clean(char*code);	//清除注释段
 void FSM(char*code);
 int main(){
 	char*code = initialize();
